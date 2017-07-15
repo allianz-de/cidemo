@@ -5,7 +5,31 @@ services:
     ports:
       - "8080:8080"
     volumes:
-     - data:/var/lib/jenkins
+     - jenkins_data:/var/lib/jenkins
+
+  selenium-hub:
+    image: selenium/hub
+    container_name: selenium-hub
+    ports:
+      - "4444:4444"
+    expose:
+      - "4444"
+  chrome:
+    image: selenium/node-chrome-debug
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=selenium-hub
+      - HUB_PORT_4444_TCP_PORT=4444
+    restart: always
+  firefox:
+    image: selenium/node-firefox-debug
+    depends_on:
+      - selenium-hub
+    environment:
+      - HUB_PORT_4444_TCP_ADDR=selenium-hub
+      - HUB_PORT_4444_TCP_PORT=4444
+    restart: always
 
 volumes:
-  data:
+  jenkins_data:
