@@ -1,0 +1,11 @@
+version: "3"
+services:
+  jenkins:
+    build: ./jenkins
+    ports:
+      - "8080:8080"
+    volumes:
+     - data:/var/lib/jenkins
+
+volumes:
+  data:
