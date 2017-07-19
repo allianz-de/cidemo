@@ -1,3 +1,6 @@
 [submodule "jenkins"]
 	path = jenkins
 	url = https://github.com/julie-ng/js-cidemo-jenkins.git
+[submodule "frontend"]
+	path = frontend
+	url = https://github.com/julie-ng/js-cidemo-frontend.git
