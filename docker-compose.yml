@@ -14,6 +14,7 @@ services:
       - "4444:4444"
     expose:
       - "4444"
+
   chrome:
     image: selenium/node-chrome-debug
     depends_on:
@@ -22,6 +23,7 @@ services:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
     restart: always
+
   firefox:
     image: selenium/node-firefox-debug
     depends_on:
