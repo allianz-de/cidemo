@@ -1,11 +1,20 @@
 version: "3"
 services:
+
+  # -------
+  # Jenkins - our Automation Server
+  # -------
+
   jenkins:
     build: ./jenkins
     ports:
       - "8080:8080"
     volumes:
      - jenkins_data:/var/lib/jenkins
+
+  # ------------
+  # Selenium Hub - with Chrome and Firefox for E2E Tests
+  # ------------
 
   selenium-hub:
     image: selenium/hub
@@ -22,7 +31,7 @@ services:
     environment:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
-    restart: always
+    # restart: always
 
   firefox:
     image: selenium/node-firefox-debug
@@ -31,7 +40,11 @@ services:
     environment:
       - HUB_PORT_4444_TCP_ADDR=selenium-hub
       - HUB_PORT_4444_TCP_PORT=4444
-    restart: always
+    # restart: always
+
+  # -----------
+  # Artifactory - used for storing compiled artifacts
+  # -----------
 
   postgresql:
     image: postgres:9.5
