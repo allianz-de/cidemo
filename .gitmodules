@@ -7,3 +7,6 @@
 [submodule "pipeline-library"]
 	path = pipeline-library
 	url = https://github.com/AllianzDeutschlandAG/cidemo-pipeline-library.git
+[submodule "backend"]
+	path = backend
+	url = https://github.com/AllianzDeutschlandAG/cidemo-backend.git
