@@ -4,3 +4,6 @@
 [submodule "frontend"]
 	path = frontend
 	url = https://github.com/julie-ng/js-cidemo-frontend.git
+[submodule "pipeline-library"]
+	path = pipeline-library
+	url = https://github.com/AllianzDeutschlandAG/cidemo-pipeline-library.git
