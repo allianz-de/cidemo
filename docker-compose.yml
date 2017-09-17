@@ -1,6 +1,30 @@
 version: "3"
 services:
 
+  # ---
+  # App - our full-stack JavaScript Demo
+  # ---
+
+  angular:
+    build: ./frontend
+    command: "npm run serve:docker"
+    ports:
+      - "80:4200"
+    volumes:
+      - ${PWD}/frontend:/workspace
+      - /workspace/node_modules
+
+  express:
+    build: ./backend
+    command: npm run server
+    ports:
+      - "3000:3000"
+    volumes:
+      - ${PWD}/backend/src:/workspace/src
+      - /workspace/node_modules
+    environment:
+      - PORT=3000
+
   # -------
   # Jenkins - our Automation Server
   # -------
