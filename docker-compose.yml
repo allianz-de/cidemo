@@ -25,6 +25,18 @@ services:
     environment:
       - PORT=3000
 
+  auth-service:
+    build: ./auth-service
+    command: npm run server
+    ports:
+      - "5000:3000"
+    volumes:
+      - ${PWD}/auth-service/src:/workspace/src
+      - /workspace/node_modules
+    environment:
+      - USER_DEMO=password
+      - USER_BENSL=secret
+
   # -------
   # Jenkins - our Automation Server
   # -------
