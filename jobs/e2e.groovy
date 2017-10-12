@@ -13,16 +13,16 @@ pipeline {
     }
 
     parameters {
-        string( name: 'APP_BASE_URL',
-                defaultValue: 'https://local.pcfdev.io/',
-                description: 'App Base URL to run e2e tests against')
+        string( name: 'APP_URL',
+                defaultValue: 'https://app-url.local.pcfdev.io/',
+                description: 'App URL to run e2e tests against')
 
         string( name: 'BRANCH',
                 defaultValue: 'master',
                 description: 'Branch to find e2e tests')
 
         string( name: 'E2E_REPO',
-                defaultValue: 'https://github.com/julie-ng/js-cidemo-frontend.git',
+                defaultValue: 'https://github.com/AllianzDeutschlandAG/cidemo-frontend.git',
                 description: 'Repository to find e2e tests')
     }
 
@@ -45,11 +45,25 @@ pipeline {
 
         stage('E2E Tests') {
             environment {
-                APP_BASE_URL = "$params.APP_BASE_URL"
+                APP_URL = "$params.APP_URL"
             }
 
             steps {
                 sh 'npm run e2e:prod'
+            }
+        }
+
+        stage('merge into master') {
+            environment {
+                GHE = credentials('github-enterprise')
+            }
+
+            steps {
+                sh "git checkout master"
+                sh "git config user.name 'technical user'"
+                sh "git config user.email 'jenkins@allianz.de'"
+                sh "git merge ${params.BRANCH}"
+                sh "git push https://${env.GHE_USR}:${env.GHE_PSW}@ghe.adp.allianz/org/repo"
             }
         }
     }
