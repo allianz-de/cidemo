@@ -1,8 +1,5 @@
 # JavaScript CI/CD Demo
 
-MunichJS  
-August 2017
-
 ### Why implement CI/CD?
 
 Continuous integration (CI) and continuious delivery (CD) enable sustainable software and fast, reliable deployments. CI starts with automated builds and tests, typically unit tests. This is however just the first step. Testing independent units and monoliths is relatively straightforward. 
@@ -90,7 +87,7 @@ There are great industry tools like [Travis CI](https://travis-ci.org/), [Codesh
 For this demo, we will focus on one slice of the stack which leverages PaaS for fast one line deploys, e.g. `cf push`. Much of the stack uses open source software and is included in the [`docker-compose.yml`](./docker-compose.yml) file.
 
 - ### Jenkins
-  _(Open source and free)_
+  _(Open source and free)_  
   ![Jenkins](./images/jenkins.png)
   
   Our automation server, which controls the workflows aka pipelines.
@@ -98,7 +95,7 @@ For this demo, we will focus on one slice of the stack which leverages PaaS for 
   ---
 
 - ### Selenium Hub
-  _(Open source and free)_
+  _(Open source and free)_  
   ![Selenium Hub](./images/selenium.png)
   ![Chrome](./images/chrome.png)
   ![Firefox](./images/firefox.png)
