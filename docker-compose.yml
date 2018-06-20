@@ -14,13 +14,13 @@ services:
       - ${PWD}/frontend:/workspace
       - /workspace/node_modules
 
-  express:
-    build: ./backend
+  middleware:
+    build: ./middleware
     command: npm run server
     ports:
       - "3000:3000"
     volumes:
-      - ${PWD}/backend/src:/workspace/src
+      - ${PWD}/middleware/src:/workspace/src
       - /workspace/node_modules
     environment:
       - PORT=3000

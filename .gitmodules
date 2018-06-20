@@ -10,3 +10,6 @@
 [submodule "auth-service"]
 	path = auth-service
 	url = https://github.com/AllianzDeutschlandAG/node-auth-mock
+[submodule "middleware"]
+	path = middleware
+	url = https://github.com/allianz-de/cidemo-middleware
