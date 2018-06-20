@@ -86,39 +86,39 @@ services:
   # Artifactory - used for storing compiled artifacts
   # -----------
 
-  postgresql:
-    image: postgres:9.5
-    container_name: postgresql
-    ports:
-     - "5432:5432"
-    expose:
-      - "5432"
-    environment:
-     - POSTGRES_DB=artifactory
-     # Must match `DB_USER` and `DB_PASSWORD`
-     - POSTGRES_USER=artifactory
-     - POSTGRES_PASSWORD=password
-    volumes:
-     - postgresql_data:/var/lib/postgresql/data
+  # postgresql:
+  #   image: postgres:9.5
+  #   container_name: postgresql
+  #   ports:
+  #    - "5432:5432"
+  #   expose:
+  #     - "5432"
+  #   environment:
+  #    - POSTGRES_DB=artifactory
+  #    # Must match `DB_USER` and `DB_PASSWORD`
+  #    - POSTGRES_USER=artifactory
+  #    - POSTGRES_PASSWORD=password
+  #   volumes:
+  #    - postgresql_data:/var/lib/postgresql/data
 
-  artifactory:
-    image: docker.bintray.io/jfrog/artifactory-oss:5.4.5
-    container_name: artifactory
-    ports:
-     - "8000:8081"
-    depends_on:
-     - postgresql
-    links:
-     - postgresql
-    volumes:
-     - artifactory_data:/var/opt/jfrog/artifactory
-    environment:
-     - DB_TYPE=postgresql
-     # Must match `POSTGRES_USER` and `POSTGRES_PASSWORD`
-     - DB_USER=artifactory
-     - DB_PASSWORD=password
+  # artifactory:
+  #   image: docker.bintray.io/jfrog/artifactory-oss:5.4.5
+  #   container_name: artifactory
+  #   ports:
+  #    - "8000:8081"
+  #   depends_on:
+  #    - postgresql
+  #   links:
+  #    - postgresql
+  #   volumes:
+  #    - artifactory_data:/var/opt/jfrog/artifactory
+  #   environment:
+  #    - DB_TYPE=postgresql
+  #    # Must match `POSTGRES_USER` and `POSTGRES_PASSWORD`
+  #    - DB_USER=artifactory
+  #    - DB_PASSWORD=password
 
 volumes:
   jenkins_data:
-  artifactory_data:
+  # artifactory_data:
   postgresql_data:
