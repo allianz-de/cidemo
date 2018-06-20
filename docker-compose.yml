@@ -48,9 +48,9 @@ services:
     volumes:
      - jenkins_data:/var/lib/jenkins
     environment:
-     - LOCAL_IP=${LOCAL_IP}
-     - SELENIUM_HUB_URL=http://${LOCAL_IP}:4444/wd/hub/
-     - ARTIFACTORY_URL=http://${LOCAL_IP}:8000/artifactory
+     - ADMIN_USER=cidemo
+     - ADMIN_PASSWORD=cidemo
+     - PIPELINE_LIBRARY_REMOTE=https://github.com/allianz-de/cidemo-pipeline-library.git
 
   # ------------
   # Selenium Hub - with Chrome and Firefox for E2E Tests
